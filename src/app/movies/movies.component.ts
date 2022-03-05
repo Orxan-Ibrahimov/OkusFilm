@@ -9,12 +9,16 @@ import { Movies } from '../models/movıes';
 })
 export class MoviesComponent implements OnInit {
 
+  title:string = "Movie List"
   movies:Movies[];
+  popularMovies:Movies[];
   movieRepository:MovieRepository;
+
 
   constructor() { 
     this.movieRepository = new MovieRepository();
     this.movies = this.movieRepository.getAllMovies();
+    this.popularMovies = this.movieRepository.getPopularMovies();
   }
 
 

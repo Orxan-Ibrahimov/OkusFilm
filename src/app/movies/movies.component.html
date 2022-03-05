@@ -1,10 +1,38 @@
-<div class="card mb-3 d-flex flex-row align-items-center" *ngFor="let item of movies">
-  <div class="card-header">
-    <img src="/assets/img/{{item.imageUrl}}" alt="movie" />
+<div *ngIf="movies.length > 0; else notFound">
+
+  <h1 class="text-center bg-dark text-white py-3 my-2">{{ title }}</h1>
+  <ng-template [ngTemplateOutlet]="popular" [ngTemplateOutletContext]="{popular: popularMovies}"></ng-template>
+
+  <div class="card mb-3 d-flex flex-row align-items-center" *ngFor="let item of movies">
+    <div class="card-header">
+      <img src="/assets/img/{{item.imageUrl}}" class="img-fluid rounded-start" alt="movie" />
+    </div>
+    <div class="card-body">
+      <h3>{{ item.name }}</h3>
+      <p>{{ item.description }}</p>
+      <a href="" class="btn btn-outline-primary">Details</a>
+    </div>
   </div>
-  <div class="card-body">
-    <h3>{{ item.name }}</h3>
-    <p>{{ item.description }}</p>
-    <a href="" class="btn btn-outline-primary">Details</a>
-  </div>
+
 </div>
+
+
+<ng-template #notFound>
+  <h5 class="alert alert-secondary text-center fw-bold my-2">No movies was Found</h5>
+</ng-template>
+
+<ng-template #popular let-myMovies="popular">
+  <div class="row row-cols-1 row-cols-md-3 g-4 mb-3">
+    <div class="col" *ngFor="let item of myMovies">
+      <div class="card h-100">
+        <a href=""><img src="/assets/img/{{item.imageUrl}}" class="card-img-top" alt="movie" /></a>
+        <div class="card-body">
+          <h5 class="card-title">{{ item.name }}</h5>
+          <p class="card-text">{{ item.description.substring(0,25)}}...</p>
+          <!-- <a href="" class="btn btn-outline-primary">Details</a> -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+</ng-template>
