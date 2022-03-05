@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Category } from '../models/category';
+import { CategoryRepository } from '../models/categoryRepository';
 
 @Component({
   selector: 'app-category',
@@ -7,7 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CategoryComponent implements OnInit {
 
-  constructor() { }
+  categories:Category[];
+  categoryRepo:CategoryRepository;
+  constructor() {
+    this.categoryRepo = new CategoryRepository();
+    this.categories = this.categoryRepo.getAllCategories();
+   }
 
   ngOnInit(): void {
   }

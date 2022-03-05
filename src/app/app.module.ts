@@ -20,7 +20,7 @@ import { MovieDetailsComponent } from './movies/movie-details/movie-details.comp
     MovieDetailsComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule 
   ],
   providers: [],
   bootstrap: [AppComponent]
