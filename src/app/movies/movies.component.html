@@ -1,50 +1,10 @@
-<div class="card mb-3 d-flex flex-row align-items-center">
+<div class="card mb-3 d-flex flex-row align-items-center" *ngFor="let item of movies">
     <div class="card-header">
-      <img src="/assets/img/spiderman.jpg" alt="movie" />
+      <img src="/assets/img/{{item.imageUrl}}" alt="movie" />
     </div>
     <div class="card-body">
-      <h3>Film 1</h3>
-      <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Delectus, fugiat.</p>
-      <a href="" class="btn btn-outline-primary">Details</a>
-    </div>
-  </div>
-  <div class="card mb-3 d-flex flex-row align-items-center">
-    <div class="card-header">
-      <img src="/assets/img/captainAmericaCiwilWar.jpg" alt="movie" />
-    </div>
-    <div class="card-body">
-      <h3>Film 2</h3>
-      <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Delectus, fugiat.</p>
-      <a href="" class="btn btn-outline-primary">Details</a>
-    </div>
-  </div>
-  <div class="card mb-3 d-flex flex-row align-items-center">
-    <div class="card-header">
-      <img src="/assets/img/captainAmericaWinterSoldier.jpg" alt="movie" />
-    </div>
-    <div class="card-body">
-      <h3>Film 3</h3>
-      <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Delectus, fugiat.</p>
-      <a href="" class="btn btn-outline-primary">Details</a>
-    </div>
-  </div>
-  <div class="card mb-3 d-flex flex-row align-items-center">
-    <div class="card-header">
-      <img src="/assets/img/dontLookUp.jpg" alt="movie" />
-    </div>
-    <div class="card-body">
-      <h3>Film 4</h3>
-      <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Delectus, fugiat.</p>
-      <a href="" class="btn btn-outline-primary">Details</a>
-    </div>
-  </div>
-  <div class="card mb-3 d-flex flex-row align-items-center">
-    <div class="card-header">
-      <img src="/assets/img/tomAndJerry.jpg" alt="movie" />
-    </div>
-    <div class="card-body">
-      <h3>Film 5</h3>
-      <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Delectus, fugiat.</p>
+      <h3>{{ item.name }}</h3>
+      <p>{{ item.description }}</p>
       <a href="" class="btn btn-outline-primary">Details</a>
     </div>
   </div>
