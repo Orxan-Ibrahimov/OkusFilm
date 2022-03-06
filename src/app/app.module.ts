@@ -11,6 +11,7 @@ import { MovieDetailsComponent } from './movies/movie-details/movie-details.comp
 import { SpecialSubstrPipe } from './pipes/special-substr.pipe';
 import { MovieFilterPipe } from './pipes/movie-filter.pipe';
 import { FormsModule } from '@angular/forms';
+import { AlertifyService } from './services/alertify.service';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,9 @@ import { FormsModule } from '@angular/forms';
     BrowserModule,
     FormsModule
   ],
-  providers: [],
+  providers: [
+    AlertifyService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
