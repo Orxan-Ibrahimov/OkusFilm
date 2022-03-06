@@ -8,6 +8,9 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
 import { MovieComponent } from './movies/movie/movie.component';
 import { MovieDetailsComponent } from './movies/movie-details/movie-details.component';
+import { SpecialSubstrPipe } from './pipes/special-substr.pipe';
+import { MovieFilterPipe } from './pipes/movie-filter.pipe';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -17,10 +20,14 @@ import { MovieDetailsComponent } from './movies/movie-details/movie-details.comp
     NavbarComponent,
     FooterComponent,
     MovieComponent,
-    MovieDetailsComponent
+    MovieDetailsComponent,
+    SpecialSubstrPipe,
+    MovieFilterPipe   
+    
   ],
   imports: [
-    BrowserModule 
+    BrowserModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

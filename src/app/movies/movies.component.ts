@@ -13,6 +13,7 @@ export class MoviesComponent implements OnInit {
   movies:Movies[];
   popularMovies:Movies[];
   movieRepository:MovieRepository;
+  filteredText:string = "";
 
 
   constructor() { 
