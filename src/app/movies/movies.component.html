@@ -41,6 +41,7 @@
       <p>{{ item.description | specialSubstr : 200}}</p>
       <p>{{ item.publishedDate | date : "dd.MM,y"}}</p>
       <a href="" class="btn btn-outline-primary">Details</a>
+      <a class="btn btn-primary" (click)="AddMovie($event,item)">Add</a>
     </div>
   </div>
 </ng-template>
