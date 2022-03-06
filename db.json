@@ -4,13 +4,13 @@
             "id": 1,
             "name": "Don't Look Up",
             "description": "Marvel’in 'Kaptan Amerika: Kahramanların Savaşı' filminde Steve Rogers’ı, insanlığı koruma yolunda görevlerine devam eden Yenilmez’lerin yenilenmiş ekibinin lideri şeklinde görüyoruz.",
-            "imageUrl": "captainAmericaCiwilWar.jpg"
+            "imageUrl": "dontLookUp.jpg"
         },
         {
             "id": 2,
             "name": "Captain America: Ciwil War",
             "description": "Astronomi mezunu bir öğrenci olan Kate Dibiasky (Jennifer Lawrence) ve onun profesörü Dr. Randall Mindy (Leonardo DiCaprio), güneş sistemi içinde yörüngede dönen bir kuyruklu yıldızı şaşırtıcı bir şekilde keşfeder.",
-            "imageUrl": "dontLookUp.jpg"
+            "imageUrl": "captainAmericaCiwilWar.jpg"
         },
         {
             "id": 3,

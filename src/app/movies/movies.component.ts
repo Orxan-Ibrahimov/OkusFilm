@@ -2,24 +2,30 @@ import { Component, OnInit } from '@angular/core';
 import { MovieRepository } from '../models/movieRepository';
 import { Movies } from '../models/movıes';
 import { AlertifyService } from '../services/alertify.service';
+import { MovieService } from '../services/movie.service';
 
 @Component({
   selector: 'app-movies',
   templateUrl: './movies.component.html',
-  styleUrls: ['./movies.component.scss']
+  styleUrls: ['./movies.component.scss'],
+  providers:[MovieService]
 })
 export class MoviesComponent implements OnInit {
 
   title:string = "Movie List"
-  movies:Movies[];
-  popularMovies:Movies[];
-  movieRepository:MovieRepository;
+  movies:Movies[] = [];
+  // popularMovies:Movies[] = [];
   filteredText:string = "";
 
-  constructor(private alert:AlertifyService) { 
-    this.movieRepository = new MovieRepository();
-    this.movies = this.movieRepository.getAllMovies();
-    this.popularMovies = this.movieRepository.getPopularMovies();
+  constructor(private alert:AlertifyService,private movieService:MovieService) 
+  {     
+  }
+
+  ngOnInit(): void {
+    this.movieService.getMovies().subscribe((data:Movies[]) => {
+      this.movies = data;
+      // data.complete();
+    });
   }
 
   AddMovie($event:any,movie:Movies){
@@ -34,11 +40,8 @@ export class MoviesComponent implements OnInit {
       $event.target.classList.add('btn-primary');
       $event.target.innerHTML = "Add";
       this.alert.error(`${movie.name} Removed`);
-
     }
   }
 
-  ngOnInit(): void {
-  }
-
+  
 }
