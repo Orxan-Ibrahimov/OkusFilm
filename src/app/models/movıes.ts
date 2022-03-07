@@ -5,4 +5,5 @@ export interface Movies {
     description:string;
     isPopular:boolean;
     publishedDate: number;
+    categoryId:number;
 } 
