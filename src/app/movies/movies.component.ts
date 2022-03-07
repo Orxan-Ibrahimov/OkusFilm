@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Category } from '../models/category';
 import { MovieRepository } from '../models/movieRepository';
 import { Movies } from '../models/movıes';
 import { AlertifyService } from '../services/alertify.service';
@@ -14,19 +16,20 @@ export class MoviesComponent implements OnInit {
 
   title:string = "Movie List"
   movies:Movies[] = [];
-  // popularMovies:Movies[] = [];
   filteredText:string = "";
-
-  constructor(private alert:AlertifyService,private movieService:MovieService) 
+  constructor(private alert:AlertifyService,private movieService:MovieService,private activatedRoute:ActivatedRoute) 
   {     
   }
 
   ngOnInit(): void {
-    this.movieService.getMovies().subscribe((data:Movies[]) => {
-      this.movies = data;
-      // data.complete();
+    this.activatedRoute.params.subscribe(params=>{
+      this.movieService.getMovies(params["categoryId"]).subscribe((data:Movies[]) => {
+        this.movies = data;
+      },);
     });
+    
   }
+  
 
   AddMovie($event:any,movie:Movies){
     if($event.target.classList.contains('btn-primary')){
@@ -42,6 +45,8 @@ export class MoviesComponent implements OnInit {
       this.alert.error(`${movie.name} Removed`);
     }
   }
+
+ 
 
   
 }

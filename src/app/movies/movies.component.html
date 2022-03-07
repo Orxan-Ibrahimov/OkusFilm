@@ -6,9 +6,6 @@
     <small class="text-muted">{{ filteredText }}</small>
   <!-- <ng-template [ngTemplateOutlet]="popular" [ngTemplateOutletContext]="{popular: popularMovies}"></ng-template> -->
   <ng-template [ngTemplateOutlet]="allMovies"></ng-template>
-
-
-
 </div>
 
 
@@ -24,7 +21,7 @@
         <div class="card-body">
           <h5 class="card-title">{{ item.name }}</h5>
           <p class="card-text">{{ item.description | specialSubstr : 30}}</p>
-          <!-- <a href="" class="btn btn-outline-primary">Details</a> -->
+          <a href="" class="btn btn-outline-primary">Details</a>
         </div>
       </div>
     </div>
@@ -40,7 +37,7 @@
       <h3>{{ item.name | titlecase }}</h3>
       <p>{{ item.description | specialSubstr : 200}}</p>
       <p>{{ item.publishedDate | date : "dd.MM,y"}}</p>
-      <a href="" class="btn btn-outline-primary">Details</a>
+      <a routerLink="{{item.id}}" class="btn btn-outline-primary">Details</a>
       <a class="btn btn-primary" (click)="AddMovie($event,item)">Add</a>
     </div>
   </div>

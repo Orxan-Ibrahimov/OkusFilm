@@ -14,6 +14,7 @@ import { FormsModule } from '@angular/forms';
 import { AlertifyService } from './services/alertify.service';
 import { HttpClientModule } from '@angular/common/http';
 import { MovieService } from './services/movie.service';
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [
@@ -25,13 +26,13 @@ import { MovieService } from './services/movie.service';
     MovieComponent,
     MovieDetailsComponent,
     SpecialSubstrPipe,
-    MovieFilterPipe   
-    
+    MovieFilterPipe       
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    AppRoutingModule
   ],
   providers: [
     AlertifyService

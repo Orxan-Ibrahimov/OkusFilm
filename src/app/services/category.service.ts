@@ -10,7 +10,9 @@ export class CategoryService {
 
     url: string = "http://localhost:3333/categories";
 
-    getCategories(): Observable<Category[]> {
+
+    getCategories(): Observable<Category[]> {       
+
         return this.http.get<Category[]>(this.url);
     }
 }
