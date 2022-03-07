@@ -17,11 +17,11 @@
   <div class="row row-cols-1 row-cols-md-3 g-4 mb-3">
     <div class="col" *ngFor="let item of myMovies">
       <div class="card h-100">
-        <a href=""><img src="/assets/img/{{item.imageUrl}}" class="card-img-top" alt="movie" /></a>
+        <a routerLink="movies/movie/{{item.id}}" ><img src="/assets/img/{{item.imageUrl}}" class="card-img-top" alt="movie" /></a>
         <div class="card-body">
           <h5 class="card-title">{{ item.name }}</h5>
           <p class="card-text">{{ item.description | specialSubstr : 30}}</p>
-          <a href="" class="btn btn-outline-primary">Details</a>
+          <a routerLink="movies/movie/{{item.id}}" class="btn btn-outline-primary">Details</a>
         </div>
       </div>
     </div>
@@ -37,7 +37,7 @@
       <h3>{{ item.name | titlecase }}</h3>
       <p>{{ item.description | specialSubstr : 200}}</p>
       <p>{{ item.publishedDate | date : "dd.MM,y"}}</p>
-      <a routerLink="{{item.id}}" class="btn btn-outline-primary">Details</a>
+      <a routerLink="/movies/movie/{{item.id}}" class="btn btn-outline-primary">Details</a>
       <a class="btn btn-primary" (click)="AddMovie($event,item)">Add</a>
     </div>
   </div>

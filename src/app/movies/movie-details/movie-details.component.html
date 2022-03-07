@@ -1,1 +1,15 @@
-<p>movie-details works!</p>
+<div class="card" *ngIf="movie else noMovie">
+    <div class="row align-items-center">
+        <div class="card-header col-3">
+            <img src="/assets/img/{{movie.imageUrl}}" class="w-100" alt="movie" />
+        </div>
+        <div class="card-body col-9">
+            <h1 class="card-title">{{ movie.name }}</h1>
+            <p class="card-text">{{ movie.description }}</p>
+        </div>
+    </div>
+</div>
+
+<ng-template #noMovie>
+    <h5 class="alert alert-secondary text-center fw-bold my-2">No movies was Found</h5>
+  </ng-template>
