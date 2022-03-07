@@ -1,0 +1,22 @@
+<form>
+    <div class="mb-3">
+        <label for="name" class="form-label">Movie Name</label>
+        <input #name type="text" class="form-control" id="name" placeholder="name@example.com">
+    </div>
+    <div class="mb-3">
+        <label for="name" class="form-label">Movie Image</label>
+        <input #image type="file" class="form-control" id="name" placeholder="name@example.com">
+    </div>
+    <div class="mb-3">
+        <label for="description" class="form-label">Movie Description</label>
+        <textarea #desc class="form-control" id="description" rows="3"></textarea>
+    </div>
+    <div class="mb-3">
+        <label for="description" class="form-label">Movie Description</label>
+        <select #category class="form-select form-select-lg mb-3">
+            <option value="{{item.id}}" *ngFor="let item of categories">{{ item.category }}</option>
+        </select>
+    </div>
+
+    <a (click)="Create(name,image,desc,category)" class="btn btn-outline-success">Create</a>
+</form>
