@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Category } from '../models/category';
-import { MovieRepository } from '../models/movieRepository';
 import { Movies } from '../models/movıes';
 import { AlertifyService } from '../services/alertify.service';
 import { MovieService } from '../services/movie.service';

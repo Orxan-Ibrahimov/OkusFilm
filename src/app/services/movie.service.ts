@@ -1,4 +1,4 @@
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 // import { url } from "inspector";
 import { Observable } from "rxjs";
@@ -32,5 +32,17 @@ export class MovieService {
          return this.http.get<Movies>(newUrl);
      }
     
+     CreateMovie(movie:Movies): Observable<Movies> {
+
+        let newUrl:string = this.url
+       
+        const httpOptions = {
+            headers: new HttpHeaders({
+                'Content-Type' : 'application/json',
+                'Authorization': 'Token'
+           })
+        }; 
+         return this.http.post<Movies>(this.url,movie,httpOptions);
+     }
     
 }

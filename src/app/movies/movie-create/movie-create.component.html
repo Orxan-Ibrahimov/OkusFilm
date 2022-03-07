@@ -4,8 +4,8 @@
         <input #name type="text" class="form-control" id="name" placeholder="name@example.com">
     </div>
     <div class="mb-3">
-        <label for="name" class="form-label">Movie Image</label>
-        <input #image type="file" class="form-control" id="name" placeholder="name@example.com">
+        <label for="image" class="form-label">Movie Image</label>
+        <input #image type="text" class="form-control" id="name">
     </div>
     <div class="mb-3">
         <label for="description" class="form-label">Movie Description</label>
@@ -14,6 +14,7 @@
     <div class="mb-3">
         <label for="description" class="form-label">Movie Description</label>
         <select #category class="form-select form-select-lg mb-3">
+            <option value="-1">Choose</option>
             <option value="{{item.id}}" *ngFor="let item of categories">{{ item.category }}</option>
         </select>
     </div>

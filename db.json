@@ -1,57 +1,65 @@
 {
-    "movies" : [
-        {
-            "id": 1,
-            "name": "Don't Look Up",
-            "description": "Astronomi mezunu bir öğrenci olan Kate Dibiasky (Jennifer Lawrence) ve onun profesörü Dr. Randall Mindy (Leonardo DiCaprio), güneş sistemi içinde yörüngede dönen bir kuyruklu yıldızı şaşırtıcı bir şekilde keşfeder.",
-            "imageUrl": "dontLookUp.jpg",
-            "categoryId" : 1
-        },
-        {
-            "id": 2,
-            "name": "Captain America: Ciwil War",
-            "description": "Marvel’in 'Kaptan Amerika: Kahramanların Savaşı' filminde Steve Rogers’ı, insanlığı koruma yolunda görevlerine devam eden Yenilmez’lerin yenilenmiş ekibinin lideri şeklinde görüyoruz.",
-            "imageUrl": "captainAmericaCiwilWar.jpg",
-            "categoryId" : 2
-        },
-        {
-            "id": 3,
-            "name": "Spider-Man: No Way Home",
-            "description": "Spider-Man: No Way Home, kimliği açığa çıkan Örümcek-Adam'ın, bu konuda Doctor Strange'den yardım istemesiyle gelişen çetrefilli olayları konu ediniyor.",
-            "imageUrl": "spiderman.jpg",
-            "categoryId" : 4
-        },
-        {
-            "id": 4,
-            "name": "Captain America: Winter Soldier",
-            "description": "Kaptan Amerika’yı, Yenilmezler ile beraber New York’ta yaşanan dehşet veren olayların ardından Washington D.C.’de mutluluk içinde yaşarken ve çağdaş dünyaya ahenk sağlamaya çalışırken buluyoruz.",
-            "imageUrl": "captainAmericaWinterSoldier.jpg",
-            "categoryId" : 1
-        },
-        {
-            "id": 5,
-            "name": "Tom and Jerry: Cowboy Up! (2022)",
-            "description": "Ezeli rakip olan Tom ve Jerry, Vahşi Batı'daki kovboy bir kıza ve onun erkek kardeşine yardım ederek, çiftliklerini kötü bir adamın elinden kurtarmaya çalışır.",
-            "imageUrl": "tomAndJerry.jpg",
-            "categoryId" : 2
-        }
-    ],
-    "categories":[
-        {
-            "id":1,
-            "category":"Romantic"
-        },
-        {
-            "id":2,
-            "category":"Dram"
-        },
-        {
-            "id":3,
-            "category":"Adventure"
-        },
-        {
-            "id":4,
-            "category":"Fantastic"
-        }
-    ]
+  "movies": [
+    {
+      "id": 1,
+      "name": "Don't Look Up",
+      "description": "Astronomi mezunu bir öğrenci olan Kate Dibiasky (Jennifer Lawrence) ve onun profesörü Dr. Randall Mindy (Leonardo DiCaprio), güneş sistemi içinde yörüngede dönen bir kuyruklu yıldızı şaşırtıcı bir şekilde keşfeder.",
+      "imageUrl": "dontLookUp.jpg",
+      "categoryId": 1
+    },
+    {
+      "id": 2,
+      "name": "Captain America: Ciwil War",
+      "description": "Marvel’in 'Kaptan Amerika: Kahramanların Savaşı' filminde Steve Rogers’ı, insanlığı koruma yolunda görevlerine devam eden Yenilmez’lerin yenilenmiş ekibinin lideri şeklinde görüyoruz.",
+      "imageUrl": "captainAmericaCiwilWar.jpg",
+      "categoryId": 2
+    },
+    {
+      "id": 3,
+      "name": "Spider-Man: No Way Home",
+      "description": "Spider-Man: No Way Home, kimliği açığa çıkan Örümcek-Adam'ın, bu konuda Doctor Strange'den yardım istemesiyle gelişen çetrefilli olayları konu ediniyor.",
+      "imageUrl": "spiderman.jpg",
+      "categoryId": 4
+    },
+    {
+      "id": 4,
+      "name": "Captain America: Winter Soldier",
+      "description": "Kaptan Amerika’yı, Yenilmezler ile beraber New York’ta yaşanan dehşet veren olayların ardından Washington D.C.’de mutluluk içinde yaşarken ve çağdaş dünyaya ahenk sağlamaya çalışırken buluyoruz.",
+      "imageUrl": "captainAmericaWinterSoldier.jpg",
+      "categoryId": 1
+    },
+    {
+      "id": 5,
+      "name": "Tom and Jerry: Cowboy Up! (2022)",
+      "description": "Ezeli rakip olan Tom ve Jerry, Vahşi Batı'daki kovboy bir kıza ve onun erkek kardeşine yardım ederek, çiftliklerini kötü bir adamın elinden kurtarmaya çalışır.",
+      "imageUrl": "tomAndJerry.jpg",
+      "categoryId": 2
+    },
+    {
+      "id": 6,
+      "name": "Shazam",
+      "description": "This is a film",
+      "isPopular": false,
+      "imageUrl": "dontLookUp.jpg",
+      "publishedDate": 7
+    }
+  ],
+  "categories": [
+    {
+      "id": 1,
+      "category": "Romantic"
+    },
+    {
+      "id": 2,
+      "category": "Dram"
+    },
+    {
+      "id": 3,
+      "category": "Adventure"
+    },
+    {
+      "id": 4,
+      "category": "Fantastic"
+    }
+  ]
 }

@@ -1,5 +1,4 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { MovieRepository } from '../models/movieRepository';
 import { Movies } from '../models/movıes';
 import { MovieComponent } from '../movies/movie/movie.component';
 

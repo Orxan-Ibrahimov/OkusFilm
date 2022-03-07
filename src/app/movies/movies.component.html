@@ -36,7 +36,7 @@
     <div class="card-body col-9">
       <h3>{{ item.name | titlecase }}</h3>
       <p>{{ item.description | specialSubstr : 200}}</p>
-      <p>{{ item.publishedDate | date : "dd.MM,y"}}</p>
+      <!-- <p>{{ item.publishedDate | date : "dd.MM,y"}}</p> -->
       <a routerLink="/movies/movie/{{item.id}}" class="btn btn-outline-primary">Details</a>
       <a class="btn btn-primary" (click)="AddMovie($event,item)">Add</a>
     </div>
