@@ -7,6 +7,7 @@ import { Movies } from 'src/app/models/movıes';
 import { AlertifyService } from 'src/app/services/alertify.service';
 import { CategoryService } from 'src/app/services/category.service';
 import { MovieService } from 'src/app/services/movie.service';
+import { ImageValidator } from 'src/app/validators/extension.validator';
 
 @Component({
   selector: 'app-movie-create',
@@ -16,13 +17,13 @@ import { MovieService } from 'src/app/services/movie.service';
 })
 export class MovieCreateComponent implements OnInit {
   categories: Category[] = [];
-  // model:any = {
-  //   categoryId:-1
-  // }
+  formBuilder: any;
+ 
   constructor(private categoryService: CategoryService, private movieService: MovieService, private router: Router,
     private alertify: AlertifyService) { }
 
   ngOnInit(): void {
+   
     this.categoryService.getCategories().subscribe((data: Category[]) => {
       this.categories = data;
       console.log(data);
@@ -31,14 +32,22 @@ export class MovieCreateComponent implements OnInit {
   }
 
    movieForm = new FormGroup({
-    name: new FormControl("",[Validators.required]),
+    name: new FormControl("",[Validators.required,Validators.minLength(5)]),
     description: new FormControl("",[Validators.required]),
-    image: new FormControl("",[Validators.required]),
+    image: new FormControl("",[Validators.required,ImageValidator.IsvalidExtension]),
     categoryId: new FormControl("",[Validators.required]),
   });
 
-  Create() {  
-   
+  get name(){
+    return this.movieForm.get('name');
+   }
+
+  get image(){
+   return this.movieForm.get('image');
+  }
+
+  Create() {   
+    console.log(this.movieForm);  
     if (this.movieForm.value.name == null || this.movieForm.value.name == undefined) {
       this.alertify.error("Movie's name can't be empty");
       return;
@@ -58,7 +67,6 @@ export class MovieCreateComponent implements OnInit {
       this.alertify.error("Image format must be one of 'jpeg','png','jpg' formats");
       return;
     }
-
     if (this.movieForm.value.description == null || this.movieForm.value.description == undefined) {
       this.alertify.error("Movie's description can't be empty");
       return;
@@ -66,9 +74,7 @@ export class MovieCreateComponent implements OnInit {
     if (this.movieForm.value.categoryId == -1) {
       this.alertify.error("You must choose any category");
       return;
-    }
-
-   
+    }  
 
     const movie = {
       id: 0,
@@ -79,12 +85,8 @@ export class MovieCreateComponent implements OnInit {
       publishedDate: new Date().getDate(),
       categoryId : this.movieForm.value.categoryId
     };
-
     this.movieService.CreateMovie(movie).subscribe(data => {
       this.router.navigate(["movies/movie/" + data.id]);
     });
-
   }
-
-
 }

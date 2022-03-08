@@ -3,15 +3,19 @@
     <div class="mb-3 col-md-6">
         <label for="name" class="form-label">Movie Name</label>
         <input required minlength="5" name="name" type="text" class="form-control" formControlName="name" id="name">
-        <!-- <div class="alert alert-danger" for="name" *ngIf="name.invalid && name.touched">
-            <p *ngIf="name.control.errors">Movie's name can't be empty</p>
-            <p  *ngIf="name.errors">Movie's name can't be less than 5 characters</p>
-        </div> -->
+        <div class="alert alert-danger" for="name" *ngIf="name.invalid && name.touched">
+            <p *ngIf="name.errors['required']">Movie's name can't be empty</p>
+            <p  *ngIf="name.errors['minlength']">Movie's name can't be less than 5 characters</p>
+        </div>
        
     </div>
     <div class="mb-3 col-md-6">
         <label for="image" class="form-label">Movie Image</label>
-        <input required type="text" class="form-control" formControlName="image" name="image">
+        <input required type="text" class="form-control" formControlName="image" />
+         <div class="alert alert-danger" for="name" *ngIf="image.invalid && image.touched">
+            <p *ngIf="image.errors['required']">Movie's image can't be empty</p>
+            <p *ngIf="image.errors['wrongExtension']">Wrong extension Format</p>
+        </div>
     </div>
     <div class="mb-3">
         <label for="description" class="form-label">Movie Description</label>
@@ -25,5 +29,5 @@
         </select>
     </div>
 
-    <button [disabled]="movieForm.invalid" class="col-2 btn btn-outline-success">Create</button>
+    <button  class="col-2 btn btn-outline-success">Create</button>
 </form>

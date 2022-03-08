@@ -52,6 +52,24 @@
       "imageUrl": "captainAmericaWinterSoldier.jpg",
       "publishedDate": 8,
       "categoryId": "4"
+    },
+    {
+      "id": 8,
+      "name": "Shazam",
+      "description": "ccc",
+      "isPopular": false,
+      "imageUrl": "captainAmericaWinterSoldier.jpg",
+      "publishedDate": 8,
+      "categoryId": "4"
+    },
+    {
+      "id": 9,
+      "name": "Shazam",
+      "description": "Salam",
+      "isPopular": false,
+      "imageUrl": "1.jpg",
+      "publishedDate": 8,
+      "categoryId": "4"
     }
   ],
   "categories": [
