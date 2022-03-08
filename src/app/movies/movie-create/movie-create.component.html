@@ -1,9 +1,9 @@
-<form #form="ngForm" (ngSubmit)="Create()" class="row">
+<form [formGroup]="movieForm" (ngSubmit)="Create()" class="row">
     
     <div class="mb-3 col-md-6">
         <label for="name" class="form-label">Movie Name</label>
-        <input required minlength="5" #name="ngModel" name="name" [(ngModel)]="model.name" type="text" class="form-control" id="name">
-        <!-- <div class="alert alert-danger" *ngIf="name.invalid && name.touched">
+        <input required minlength="5" name="name" type="text" class="form-control" formControlName="name" id="name">
+        <!-- <div class="alert alert-danger" for="name" *ngIf="name.invalid && name.touched">
             <p *ngIf="name.control.errors">Movie's name can't be empty</p>
             <p  *ngIf="name.errors">Movie's name can't be less than 5 characters</p>
         </div> -->
@@ -11,19 +11,19 @@
     </div>
     <div class="mb-3 col-md-6">
         <label for="image" class="form-label">Movie Image</label>
-        <input required #image="ngModel" [(ngModel)]="model.image" type="text" class="form-control" name="image">
+        <input required type="text" class="form-control" formControlName="image" name="image">
     </div>
     <div class="mb-3">
         <label for="description" class="form-label">Movie Description</label>
-        <textarea required #description="ngModel" [(ngModel)]="model.description" class="form-control" name="description" id="description" rows="3"></textarea>
+        <textarea required class="form-control" name="description" formControlName="description" id="description" rows="3"></textarea>
     </div>
     <div class="mb-3">
         <label for="categoryId" class="form-label">Choose any Category</label>
-        <select required #categoryId="ngModel" name="categoryId" [(ngModel)]="model.categoryId" class="form-select form-select-lg mb-3">
+        <select required name="categoryId" formControlName="categoryId" class="form-select form-select-lg mb-3">
             <option value="-1">Choose</option>
             <option [value]="item.id" *ngFor="let item of categories">{{ item.category }}</option>
         </select>
     </div>
 
-    <button type="submit" class="col-2 btn btn-outline-success">Create</button>
+    <button [disabled]="movieForm.invalid" class="col-2 btn btn-outline-success">Create</button>
 </form>

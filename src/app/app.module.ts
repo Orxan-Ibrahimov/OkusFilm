@@ -10,7 +10,7 @@ import { MovieComponent } from './movies/movie/movie.component';
 import { MovieDetailsComponent } from './movies/movie-details/movie-details.component';
 import { SpecialSubstrPipe } from './pipes/special-substr.pipe';
 import { MovieFilterPipe } from './pipes/movie-filter.pipe';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AlertifyService } from './services/alertify.service';
 import { HttpClientModule } from '@angular/common/http';
 import { MovieService } from './services/movie.service';
@@ -34,7 +34,8 @@ import { MovieCreateComponent } from './movies/movie-create/movie-create.compone
     BrowserModule,
     FormsModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule
   ],
   providers: [
     AlertifyService

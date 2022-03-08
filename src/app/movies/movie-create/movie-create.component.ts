@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NgForm, NgModel } from '@angular/forms';
+import { FormControl, FormGroup, NgForm, NgModel, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Category } from 'src/app/models/category';
@@ -16,9 +16,9 @@ import { MovieService } from 'src/app/services/movie.service';
 })
 export class MovieCreateComponent implements OnInit {
   categories: Category[] = [];
-  model:any = {
-    categoryId:-1
-  }
+  // model:any = {
+  //   categoryId:-1
+  // }
   constructor(private categoryService: CategoryService, private movieService: MovieService, private router: Router,
     private alertify: AlertifyService) { }
 
@@ -30,36 +30,40 @@ export class MovieCreateComponent implements OnInit {
     });
   }
 
-  Create() {
-    console.log(this.model);
-    console.log(this.model.categoryId);
-    
+   movieForm = new FormGroup({
+    name: new FormControl("",[Validators.required]),
+    description: new FormControl("",[Validators.required]),
+    image: new FormControl("",[Validators.required]),
+    categoryId: new FormControl("",[Validators.required]),
+  });
 
-    if (this.model.name == null || this.model.name == undefined) {
+  Create() {  
+   
+    if (this.movieForm.value.name == null || this.movieForm.value.name == undefined) {
       this.alertify.error("Movie's name can't be empty");
       return;
     }
-    else if(this.model.name.length < 5){
+    else if(this.movieForm.value.name.length < 5){
       this.alertify.error("Movie's name can't be less than 5 characters");
       return;
     }
-    if (this.model.image == null || this.model.image == undefined) {
+    if (this.movieForm.value.image == null ||this.movieForm.value.image == undefined) {
       this.alertify.error("Movie's image can't be empty");
       return;
     }
 
     const extensions = ["jpeg", "png", "jpg"];
-    let extension = this.model.image.split(".").pop();
+    let extension = this.movieForm.value.image.split(".").pop();
     if (extensions.indexOf(extension) == -1) {
       this.alertify.error("Image format must be one of 'jpeg','png','jpg' formats");
       return;
     }
 
-    if (this.model.description == null || this.model.description == undefined) {
+    if (this.movieForm.value.description == null || this.movieForm.value.description == undefined) {
       this.alertify.error("Movie's description can't be empty");
       return;
     }
-    if (this.model.categoryId == -1) {
+    if (this.movieForm.value.categoryId == -1) {
       this.alertify.error("You must choose any category");
       return;
     }
@@ -68,12 +72,12 @@ export class MovieCreateComponent implements OnInit {
 
     const movie = {
       id: 0,
-      name: this.model.name,
-      description: this.model.description,
+      name: this.movieForm.value.name,
+      description: this.movieForm.value.description,
       isPopular: false,
-      imageUrl: this.model.image,
+      imageUrl: this.movieForm.value.image,
       publishedDate: new Date().getDate(),
-      categoryId : this.model.categoryId
+      categoryId : this.movieForm.value.categoryId
     };
 
     this.movieService.CreateMovie(movie).subscribe(data => {
