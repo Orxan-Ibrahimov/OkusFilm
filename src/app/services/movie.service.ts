@@ -1,50 +1,48 @@
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-// import { url } from "inspector";
 import { Observable } from "rxjs";
 import { map, tap } from "rxjs/operators";
 import { Movies } from "../models/movıes";
 
 @Injectable()
 export class MovieService {
-    // url:string = "http://localhost:3333/movies";
     firebase_url: string = "https://app-movie-ae188-default-rtdb.firebaseio.com/";
 
     constructor(private http: HttpClient) { }
 
 
     getMovies(categoryId: number): Observable<Movies[]> {
-
-        let newUrl: string = this.firebase_url + 'movies.json';
-
-        if (categoryId)
-            newUrl += "?categoryId=" + categoryId;
+        let newUrl: string = this.firebase_url + 'movies.json';    
 
         return this.http.get<Movies[]>(newUrl)
             .pipe(
                 map(data => {
-                    const movies:Movies[] = [];
+                    const movies: Movies[] = [];
+                    
                     for (const key in data) {
                         if (Object.prototype.hasOwnProperty.call(data, key)) {
                             const element = data[key];
-                            movies.push({...data[key],id:key});                            
+
+                            if (categoryId) {
+                                if(categoryId === data[key].categoryId){
+                                    movies.push({ ...data[key], id: key });
+                                }                               
+                            }
+                            else{
+                                movies.push({ ...data[key], id: key });
+                            }
                         }
-                    }                    
+                    }
                     return movies;
                 }),
             );
     }
 
-    getMovieById(id: number): Observable<Movies> {
-
-        // let newUrl:string = this.url;
-
-        //  if (id) 
-        //  newUrl += "/" + id;
+    getMovieById(id: string): Observable<Movies> {
 
         let newUrl: string = this.firebase_url + "movies";
-        if (id) 
-        newUrl += "/" + id + ".json";
+        if (id)
+            newUrl += "/" + id + ".json";
 
         return this.http.get<Movies>(newUrl);
     }
@@ -52,7 +50,6 @@ export class MovieService {
     CreateMovie(movie: Movies): Observable<Movies> {
 
         let newUrl: string = this.firebase_url
-        // let newUrl:string = this.url
 
         const httpOptions = {
             headers: new HttpHeaders({

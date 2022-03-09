@@ -47,7 +47,6 @@ export class MovieCreateComponent implements OnInit {
   }
 
   Create() {   
-    console.log(this.movieForm);  
     if (this.movieForm.value.name == null || this.movieForm.value.name == undefined) {
       this.alertify.error("Movie's name can't be empty");
       return;

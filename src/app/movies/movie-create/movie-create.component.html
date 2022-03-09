@@ -24,7 +24,7 @@
     <div class="mb-3">
         <label for="categoryId" class="form-label">Choose any Category</label>
         <select required name="categoryId" formControlName="categoryId" class="form-select form-select-lg mb-3">
-            <option value="-1">Choose</option>
+            <option value="">Choose</option>
             <option [value]="item.id" *ngFor="let item of categories">{{ item.category }}</option>
         </select>
     </div>

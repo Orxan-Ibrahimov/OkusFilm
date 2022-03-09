@@ -1,0 +1,14 @@
+<form [formGroup]="movieCategory" (ngSubmit)="CreateCategory()" class="row">
+    
+    <div class="mb-3 col-md-12">
+        <label for="category" class="form-label">category</label>
+        <input required minlength="5" name="category" type="text" class="form-control" formControlName="category" id="category">
+        <div class="alert alert-danger" for="category" *ngIf="category.invalid && category.touched">
+            <p *ngIf="category.errors['required']">Movie's name can't be empty</p>
+            <p  *ngIf="category.errors['minlength']">Movie's name can't be less than 5 characters</p>
+        </div>
+       
+    </div>  
+
+    <button [disabled]="movieCategory.invalid" class="col-2 btn btn-outline-success">Create</button>
+</form>
