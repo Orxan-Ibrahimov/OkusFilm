@@ -1,13 +1,14 @@
-<div *ngIf="movies.length > 0; else notFound">
+<div *ngIf="!loading">
+  <div *ngIf="movies.length > 0; else notFound">
 
-  <h1 class="text-center bg-dark text-white py-3 my-2">{{ title }}</h1>
-
-  <input [(ngModel)]="filteredText" class="form-control my-2" placeholder="Type here a Film Name" />
-    <small class="text-muted">{{ filteredText }}</small>
-  <!-- <ng-template [ngTemplateOutlet]="popular" [ngTemplateOutletContext]="{popular: popularMovies}"></ng-template> -->
-  <ng-template [ngTemplateOutlet]="allMovies"></ng-template>
+    <h1 class="text-center bg-dark text-white py-3 my-2">{{ title }}</h1>
+  
+    <input [(ngModel)]="filteredText" class="form-control my-2" placeholder="Type here a Film Name" />
+      <small class="text-muted">{{ filteredText }}</small>
+    <!-- <ng-template [ngTemplateOutlet]="popular" [ngTemplateOutletContext]="{popular: popularMovies}"></ng-template> -->
+    <ng-template [ngTemplateOutlet]="allMovies"></ng-template>
+  </div>
 </div>
-
 
 <ng-template #notFound>
   <h5 class="alert alert-secondary text-center fw-bold my-2">No movies was Found</h5>
@@ -42,3 +43,7 @@
     </div>
   </div>
 </ng-template>
+
+<div *ngIf="loading" class="spinner-border text-primary" role="status">
+  <span class="visually-hidden">Loading...</span>
+</div>

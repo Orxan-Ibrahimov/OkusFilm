@@ -16,15 +16,19 @@ export class MoviesComponent implements OnInit {
   title:string = "Movie List"
   movies:Movies[] = [];
   filteredText:string = "";
+  loading:boolean = true;
   constructor(private alert:AlertifyService,private movieService:MovieService,private activatedRoute:ActivatedRoute) 
   {     
   }
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(params=>{
-      this.movieService.getMovies(params["categoryId"]).subscribe((data:Movies[]) => {       
+      
+      this.movieService.getMovies(params["categoryId"]).subscribe((data:Movies[]) => { 
         this.movies = data;
+        this.loading = false;
       },);
+     
     });
     
   }

@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
-import { map, tap } from "rxjs/operators";
+import { delay, map, tap } from "rxjs/operators";
 import { Movies } from "../models/movıes";
 
 @Injectable()
@@ -35,6 +35,7 @@ export class MovieService {
                     }
                     return movies;
                 }),
+                // delay(1000)
             );
     }
 
