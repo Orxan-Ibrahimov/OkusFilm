@@ -17,6 +17,7 @@ import { MovieService } from './services/movie.service';
 import { AppRoutingModule } from './app-routing.module';
 import { MovieCreateComponent } from './movies/movie-create/movie-create.component';
 import { CreateCategoryComponent } from './category/create-category/create-category.component';
+import { AuthComponent } from './auth/auth.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { CreateCategoryComponent } from './category/create-category/create-categ
     SpecialSubstrPipe,
     MovieFilterPipe,
     MovieCreateComponent,
-    CreateCategoryComponent       
+    CreateCategoryComponent,
+    AuthComponent       
   ],
   imports: [
     BrowserModule,
