@@ -20,12 +20,10 @@ export class CategoryComponent implements OnInit {
   ngOnInit(): void { 
 
     this.category.getCategories().subscribe((data: Category[]) => {
-      this.categories = data;
+      this.categories = data;      
     });
     
-  }
-
-  
+  }  
 
   SelectCategory(element?: Category) {
 

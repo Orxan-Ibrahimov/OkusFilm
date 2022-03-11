@@ -13,7 +13,7 @@ export class MovieService {
     constructor(private http: HttpClient,private auth:AuthService) { }
 
 
-    getMovies(categoryId: number): Observable<Movies[]> {
+    getMovies(categoryId: string): Observable<Movies[]> {
         let newUrl: string = this.firebase_url + 'movies.json';    
 
         return this.http.get<Movies[]>(newUrl)
@@ -36,6 +36,9 @@ export class MovieService {
                             }
                         }
                     }
+                    console.log('movies');
+                    console.log(movies);
+                    
                     return movies;
                 }),
                 tap(data => console.log(data)),

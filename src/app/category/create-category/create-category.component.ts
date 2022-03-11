@@ -35,7 +35,7 @@ export class CreateCategoryComponent implements OnInit {
     }
 
     const newCategory: Category = {
-      id:0,
+      id:"",
       category: this.movieCategory.value.category
     };
 

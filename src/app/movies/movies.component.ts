@@ -23,23 +23,18 @@ export class MoviesComponent implements OnInit {
   {     
   }
 
-
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(params=>{
       
       this.movieService.getMovies(params["categoryId"]).subscribe((data:Movies[]) => { 
         this.movies = data;
-        this.loading = false;       
-        
+        this.loading = false;               
       }, error => {
        console.log(error);
         this.loading = false;
-      });     
-     
-    });   
-    
-  }
-  
+      });          
+    });       
+  } 
 
   AddMovie($event:any,movie:Movies){
     if($event.target.classList.contains('btn-primary')){
@@ -54,9 +49,5 @@ export class MoviesComponent implements OnInit {
       $event.target.innerHTML = "Add";
       this.alert.error(`${movie.name} Removed`);
     }
-  }
-
- 
-
-  
+  }  
 }

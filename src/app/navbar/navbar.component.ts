@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 
 @Component({
@@ -10,9 +11,9 @@ import { AuthService } from '../services/auth.service';
 
 export class NavbarComponent implements OnInit {
 
-  isAuthicantitated:boolean = false;
+  isAuthicantitated: boolean = false;
 
-  constructor(private auth:AuthService) { }
+  constructor(private auth: AuthService,private router:Router) { }
 
   ngOnInit(): void {
 
@@ -24,10 +25,14 @@ export class NavbarComponent implements OnInit {
       // else
       // this.isAuthicantitated = true;
 
-      this.isAuthicantitated = !!data;
-      
+      this.isAuthicantitated = !!data;     
 
     });
+  }
+
+  OnLogout(){
+    this.auth.Logout(); 
+    this.router.navigate(['auth']);   
   }
 
 }

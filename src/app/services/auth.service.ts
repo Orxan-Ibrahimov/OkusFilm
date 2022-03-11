@@ -60,5 +60,8 @@ export class AuthService {
     );
   }
 
+  Logout(){
+    this.user.next(null);
+  }
 
 }

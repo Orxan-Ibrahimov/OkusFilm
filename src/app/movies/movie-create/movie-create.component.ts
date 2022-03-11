@@ -76,7 +76,7 @@ export class MovieCreateComponent implements OnInit {
     }  
 
     const movie = {
-      id: 0,
+      id: '',
       name: this.movieForm.value.name,
       description: this.movieForm.value.description,
       isPopular: false,

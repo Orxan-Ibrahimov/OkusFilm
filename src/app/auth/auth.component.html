@@ -1,13 +1,23 @@
-<form [formGroup]="auth" (ngSubmit)="Send()" class="row">    
-    <div class="mb-3 col-md-6">
-        <label for="email" class="form-label">Email</label>
-        <input required formControlName="email" name="email" type="text" class="form-control" id="email">      
-    </div>
-    <div class="mb-3 col-md-6">
-        <label for="password" class="form-label">Password</label>
-        <input required type="password" name="password" type="text" class="form-control" formControlName="password" id="password">               
-    </div>
+<div class="container">
+    <div class="row">
+        <div class="col-6 offset-3">
+            <form [formGroup]="auth" (ngSubmit)="Send()" class="row my-4">
+                <h1>{{ loginMode?('Login Page'):('Register Page') }}</h1>
 
-    <button type="submit" class="col-2 btn btn-outline-success">{{ loginMode?('Login'):('Register')}}</button>
-    <button type="button" (click)="ToogleMode()" class="col-2 btn btn-outline-success">LoginMode</button>
-</form>
+                <div class="mb-3 col-md-6">
+                    <label for="email" class="form-label">Email</label>
+                    <input required formControlName="email" name="email" type="text" class="form-control" id="email" />
+                </div>
+                <div class="mb-3 col-md-6">
+                    <label for="password" class="form-label">Password</label>
+                    <input required type="password" name="password" type="text" class="form-control" formControlName="password" id="password" />
+                </div>
+
+                <div>
+                    <button type="submit" class="col-2 btn btn-outline-success">{{ loginMode?('Login'):('Register')}}</button>
+                    <button type="button" (click)="ToogleMode()" class="col-2 btn btn-outline-success">LoginMode</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

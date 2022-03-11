@@ -1,14 +1,47 @@
-<div *ngIf="!loading">
-  <div *ngIf="movies.length > 0; else notFound">
+<div class="container">
+  <div class="row my-3">
 
-    <h1 class="text-center bg-dark text-white py-3 my-2">{{ title }}</h1>
-  
-    <input [(ngModel)]="filteredText" class="form-control my-2" placeholder="Type here a Film Name" />
-      <small class="text-muted">{{ filteredText }}</small>
-    <!-- <ng-template [ngTemplateOutlet]="popular" [ngTemplateOutletContext]="{popular: popularMovies}"></ng-template> -->
-    <ng-template [ngTemplateOutlet]="allMovies"></ng-template>
+    <div class="col-md-3">
+      <app-category></app-category>
+     </div>
+
+     <div class="col-md-9">
+    
+      <div *ngIf="!loading">
+        <div *ngIf="movies.length > 0; else notFound">
+      
+          <h1 class="text-center bg-dark text-white py-3 my-2">{{ title }}</h1>
+        
+          <input [(ngModel)]="filteredText" class="form-control my-2" placeholder="Type here a Film Name" />
+            <small class="text-muted">{{ filteredText }}</small>
+          <!-- <ng-template [ngTemplateOutlet]="popular" [ngTemplateOutletContext]="{popular: popularMovies}"></ng-template> -->
+          <ng-template [ngTemplateOutlet]="allMovies"></ng-template>
+        </div>
+      </div>
+    
+      <div *ngIf="loading" class="spinner-border text-primary" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+    
+     </div>
+     
   </div>
 </div>
+
+ <ng-template #allMovies>
+  <div class="card row mb-3 d-flex flex-row align-items-center" *ngFor="let item of movies | movieFilter:filteredText">
+    <div class="card-header col-3">
+      <img src="/assets/img/{{item.imageUrl}}" class="img-fluid rounded-start" alt="movie" />
+    </div>
+    <div class="card-body col-9">
+      <h3>{{ item.name | titlecase }}</h3>
+      <p>{{ item.description | specialSubstr : 200}}</p>
+      <!-- <p>{{ item.publishedDate | date : "dd.MM,y"}}</p> -->
+      <a routerLink="/movies/movie/{{item.id}}" class="btn btn-outline-primary">Details</a>
+      <a class="btn btn-primary" (click)="AddMovie($event,item)">Add</a>
+    </div>
+  </div>
+</ng-template>
 
 <ng-template #notFound>
   <h5 class="alert alert-secondary text-center fw-bold my-2">No movies was Found</h5>
@@ -28,22 +61,3 @@
     </div>
   </div>
 </ng-template>
-
-<ng-template #allMovies>
-  <div class="card row mb-3 d-flex flex-row align-items-center" *ngFor="let item of movies | movieFilter:filteredText">
-    <div class="card-header col-3">
-      <img src="/assets/img/{{item.imageUrl}}" class="img-fluid rounded-start" alt="movie" />
-    </div>
-    <div class="card-body col-9">
-      <h3>{{ item.name | titlecase }}</h3>
-      <p>{{ item.description | specialSubstr : 200}}</p>
-      <!-- <p>{{ item.publishedDate | date : "dd.MM,y"}}</p> -->
-      <a routerLink="/movies/movie/{{item.id}}" class="btn btn-outline-primary">Details</a>
-      <a class="btn btn-primary" (click)="AddMovie($event,item)">Add</a>
-    </div>
-  </div>
-</ng-template>
-
-<div *ngIf="loading" class="spinner-border text-primary" role="status">
-  <span class="visually-hidden">Loading...</span>
-</div>
