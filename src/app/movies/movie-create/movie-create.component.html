@@ -1,32 +1,38 @@
-<form [formGroup]="movieForm" (ngSubmit)="Create()" class="row">
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <form [formGroup]="movieForm" (ngSubmit)="Create()" class="row">
     
-    <div class="mb-3 col-md-6">
-        <label for="name" class="form-label">Movie Name</label>
-        <input required minlength="5" name="name" type="text" class="form-control" formControlName="name" id="name">
-        <div class="alert alert-danger" for="name" *ngIf="name.invalid && name.touched">
-            <p *ngIf="name.errors['required']">Movie's name can't be empty</p>
-            <p  *ngIf="name.errors['minlength']">Movie's name can't be less than 5 characters</p>
-        </div>       
-    </div>
-    <div class="mb-3 col-md-6">
-        <label for="image" class="form-label">Movie Image</label>
-        <input required type="text" class="form-control" formControlName="image" />
-         <div class="alert alert-danger" for="name" *ngIf="image.invalid && image.touched">
-            <p *ngIf="image.errors['required']">Movie's image can't be empty</p>
-            <p *ngIf="image.errors['wrongExtension']">Wrong extension Format</p>
+                <div class="mb-3 col-md-6">
+                    <label for="name" class="form-label">Movie Name</label>
+                    <input required minlength="5" name="name" type="text" class="form-control" formControlName="name" id="name">
+                    <div class="alert alert-danger" for="name" *ngIf="name.invalid && name.touched">
+                        <p *ngIf="name.errors['required']">Movie's name can't be empty</p>
+                        <p  *ngIf="name.errors['minlength']">Movie's name can't be less than 5 characters</p>
+                    </div>       
+                </div>
+                <div class="mb-3 col-md-6">
+                    <label for="image" class="form-label">Movie Image</label>
+                    <input required type="text" class="form-control" formControlName="image" />
+                     <div class="alert alert-danger" for="name" *ngIf="image.invalid && image.touched">
+                        <p *ngIf="image.errors['required']">Movie's image can't be empty</p>
+                        <p *ngIf="image.errors['wrongExtension']">Wrong extension Format</p>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="description" class="form-label">Movie Description</label>
+                    <textarea required class="form-control" name="description" formControlName="description" id="description" rows="3"></textarea>
+                </div>
+                <div class="mb-3">
+                    <label for="categoryId" class="form-label">Choose any Category</label>
+                    <select required name="categoryId" formControlName="categoryId" class="form-select form-select-lg mb-3">
+                        <option value="">Choose</option>
+                        <option [value]="item.id" *ngFor="let item of categories">{{ item.category }}</option>
+                    </select>
+                </div>
+            
+                <button [disabled]="movieForm.invalid" class="col-2 btn btn-outline-success">Create</button>
+            </form>
         </div>
     </div>
-    <div class="mb-3">
-        <label for="description" class="form-label">Movie Description</label>
-        <textarea required class="form-control" name="description" formControlName="description" id="description" rows="3"></textarea>
-    </div>
-    <div class="mb-3">
-        <label for="categoryId" class="form-label">Choose any Category</label>
-        <select required name="categoryId" formControlName="categoryId" class="form-select form-select-lg mb-3">
-            <option value="">Choose</option>
-            <option [value]="item.id" *ngFor="let item of categories">{{ item.category }}</option>
-        </select>
-    </div>
-
-    <button [disabled]="movieForm.invalid" class="col-2 btn btn-outline-success">Create</button>
-</form>
+</div>
