@@ -3,18 +3,21 @@ import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { delay, map, tap } from "rxjs/operators";
 import { Movies } from "../models/movıes";
+import { AuthService } from "./auth.service";
 
 @Injectable()
 export class MovieService {
     firebase_url: string = "https://app-movie-ae188-default-rtdb.firebaseio.com/";
+    token: string;
 
-    constructor(private http: HttpClient) { }
+    constructor(private http: HttpClient,private auth:AuthService) { }
 
 
     getMovies(categoryId: number): Observable<Movies[]> {
         let newUrl: string = this.firebase_url + 'movies.json';    
 
         return this.http.get<Movies[]>(newUrl)
+
             .pipe(
                 map(data => {
                     const movies: Movies[] = [];
@@ -35,6 +38,7 @@ export class MovieService {
                     }
                     return movies;
                 }),
+                tap(data => console.log(data)),
                 // delay(1000)
             );
     }
@@ -57,8 +61,7 @@ export class MovieService {
                 'Content-Type': 'application/json',
                 'Authorization': 'Token'
             })
-        };
+        };       
         return this.http.post<Movies>(newUrl + 'movies.json', movie, httpOptions);
-    }
-
+    }   
 }

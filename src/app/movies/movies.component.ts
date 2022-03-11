@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Category } from '../models/category';
 import { Movies } from '../models/movıes';
 import { AlertifyService } from '../services/alertify.service';
+import { AuthService } from '../services/auth.service';
 import { MovieService } from '../services/movie.service';
 
 @Component({
@@ -17,19 +18,25 @@ export class MoviesComponent implements OnInit {
   movies:Movies[] = [];
   filteredText:string = "";
   loading:boolean = true;
+  
   constructor(private alert:AlertifyService,private movieService:MovieService,private activatedRoute:ActivatedRoute) 
   {     
   }
+
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(params=>{
       
       this.movieService.getMovies(params["categoryId"]).subscribe((data:Movies[]) => { 
         this.movies = data;
+        this.loading = false;       
+        
+      }, error => {
+       console.log(error);
         this.loading = false;
-      },);
+      });     
      
-    });
+    });   
     
   }
   

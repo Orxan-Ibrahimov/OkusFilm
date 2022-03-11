@@ -12,12 +12,13 @@ import { SpecialSubstrPipe } from './pipes/special-substr.pipe';
 import { MovieFilterPipe } from './pipes/movie-filter.pipe';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AlertifyService } from './services/alertify.service';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { MovieService } from './services/movie.service';
 import { AppRoutingModule } from './app-routing.module';
 import { MovieCreateComponent } from './movies/movie-create/movie-create.component';
 import { CreateCategoryComponent } from './category/create-category/create-category.component';
 import { AuthComponent } from './auth/auth.component';
+import { AuthInterceptor } from './services/auth.interceptor';
 
 @NgModule({
   declarations: [
@@ -42,8 +43,9 @@ import { AuthComponent } from './auth/auth.component';
     ReactiveFormsModule
   ],
   providers: [
-    AlertifyService
+    AlertifyService,
+    {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi:true},
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],  
 })
 export class AppModule { }

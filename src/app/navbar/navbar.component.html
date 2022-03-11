@@ -11,7 +11,8 @@
         </ul>
 
         <ul class="navbar-nav">
-            <li class="nav-item"><a routerLink="/auth" class="nav-link active">Auth</a></li>            
+            <li *ngIf="!isAuthicantitated" class="nav-item"><a routerLink="/auth" class="nav-link active">Login</a></li>            
+            <li *ngIf="isAuthicantitated" class="nav-item"><a routerLink="/logout" class="nav-link active">Logout</a></li>            
         </ul>
     </div>
 </nav>

@@ -4,6 +4,7 @@ import { AlertifyService } from '../services/alertify.service';
 import { AuthService } from '../services/auth.service';
 import { AutResponse } from '../models/autResponse';
 import { Observable } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-auth',
@@ -13,10 +14,8 @@ import { Observable } from 'rxjs';
 export class AuthComponent implements OnInit {
 
   loginMode: boolean = false;
-
-
-  constructor(private authServise: AuthService, private alert: AlertifyService) { }
-
+  constructor(private authServise: AuthService, private alert: AlertifyService,private router:Router) { }
+  
   ngOnInit(): void {
   }
 
@@ -29,9 +28,7 @@ export class AuthComponent implements OnInit {
     this.loginMode = !this.loginMode;
   }
   Send() {
-console.log('salam');
-
-    let authResponse:Observable<AutResponse>;
+    let authResponse: Observable<AutResponse>;
     if (this.auth.value.email == null || this.auth.value.email == undefined || this.auth.value.email == "") {
       this.alert.error("email can't be empty")
       return;
@@ -49,17 +46,10 @@ console.log('salam');
     }
 
     authResponse.subscribe(data=>{
-      console.log(data);   
-         
+     this.router.navigate(['movies']);
+
     },err => {
       console.log(err);
-      
-    });
-    ;
-    console.log(authResponse);
-
+    });    
   }
-
-
-
 }
